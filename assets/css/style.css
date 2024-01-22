@@ -11,3 +11,27 @@
 		font-size: 3.5rem;
 	}
 }
+
+a { text-decoration: none; }
+.mod-hover:hover { background: rgba(0,0,0,0.05); }
+.accordion-item { border: 0; box-shadow: 0 0 2px rgba(0,0,0,0.4); }
+.accordion-body { font-weight: normal; }
+
+.code-fixed { border-left: 5px solid orange; }
+.code-added { border-left: 5px solid green; }
+.code-removed { border-left: 5px solid red; }
+
+.img-responsive { width: 100%; height: auto; }
+
+.console { width: 100%; margin: 0.5rem 0 1rem 0; }
+.console-head { padding: 5px 10px; background: #33312D; border-radius: 5px 5px 0px 0px; color: white; font-size: 15px; }
+.console-body {
+	white-space: nowrap;
+	overflow: auto;
+	-ms-overflow-style: scrollbar;
+	padding: 10px 15px;
+	background: #634A87;
+	color: white;
+	font-size: 14px;
+	word-spacing: 0.5rem;
+}
