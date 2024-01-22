@@ -1,3 +1,7 @@
+* { box-shadow: none; outline: none; }
+.form-select:focus { box-shadow: none; outline: none; }
+.accordion-button:focus { box-shadow: none; outline: none; }
+
 .bd-placeholder-img {
 	font-size: 1.125rem;
 	text-anchor: middle;
