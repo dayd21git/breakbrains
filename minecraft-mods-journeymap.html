@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="BreakBrains - developments for minecraft" />
+    <meta name="keywords" content="break, brains, minecraft, mods, fixes, брейк, брейнс, мод, фиксы, майнкрафт" />
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <title>BreakBrains - developments for games</title>
+    <link href="assets/css/offcanvas.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/prism.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/img/logo.png" />
+</head>
+  
+<body class="bg-light">
+	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Break Brains</a>
+			<button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<!--<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Active link</a></li>-->
+					<!--<li class="nav-item"><a class="nav-link" href="#">Link</a></li>-->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Addons</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown01">
+							<li><a class="dropdown-item" href="minecraft-mods.html">Minecraft Mods</a></li>
+							<li><a class="dropdown-item" href="minecraft-plugins.html"><s>Minecraft Plugins</s></a></li>
+						</ul>
+					</li>
+				</ul>
+				<form class="d-flex">
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+
+	<div class="nav-scroller bg-body shadow-sm">
+		<nav class="nav nav-underline" aria-label="Secondary navigation">
+			<a class="nav-link" href="#">Views: <span class="badge bg-light text-dark rounded-pill align-text-bottom">0</span></a>
+			<!--<a class="nav-link active" aria-current="page" href="#">Active Link</a>
+			<a class="nav-link" href="#">Example<span class="badge bg-light text-dark rounded-pill align-text-bottom">27</span></a>
+			<a class="nav-link" href="#">Link</a>-->
+		</nav>
+	</div>
+	
+	<main class="container my-3">
+		<div class="d-flex align-items-center p-3 my-3 text-white bg-purple bg-gradient rounded shadow-sm">
+			<img class="me-3" src="assets/img/mods/journeymap.png" alt="" width="38" height="38">
+			<div class="lh-1">
+				<h1 class="h6 mb-0 text-white lh-1">JourneyMap</h1>
+				<small>Real-time mapping in-game or your browser as you explore</small>
+			</div>
+		</div>
+		
+		<div class="my-3 p-3 bg-body rounded shadow-sm">
+			<h6 class="pb-2 mb-0">Download fix & src:</h6>
+			<p>If you need the source code, select the «ADDITIONAL FILES» tab at the bottom of the downloads page</p>
+			<select class="mt-2 form-select form-select-sm" onchange="(this.options[this.selectedIndex].value?  window.open(this.options[this.selectedIndex].value,'_blank'):'')">
+				<option selected disabled>Select fix</option>
+				<option value="https://curseforge.com/minecraft/mc-mods/bbrains-umfixes/files/5032937">Forge 1.7.10</option>
+			</select>
+			<select class="mt-2 form-select form-select-sm" onchange="(this.options[this.selectedIndex].value?  window.open(this.options[this.selectedIndex].value,'_blank'):'')">
+				<option selected disabled>Select src</option>
+				<option value="https://curseforge.com/minecraft/mc-mods/bbrains-umfixes/files/5032938">Forge 1.7.10</option>
+			</select>
+		</div>
+		
+		<div class="my-3 p-3 bg-body rounded shadow-sm">
+			<h6 class="pb-2 mb-0">Changelog (<span class="text-success">●</span> Added <span class="text-warning">●</span> Edited/Fixed <span class="text-danger">●</span> Removed):</h6>
+			<div class="accordion accordion-flush" id="changelog">
+				<div class="accordion-item">
+					<h2 class="accordion-header">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#forge7" aria-expanded="false" aria-controls="forge7">
+							<b>Forge 1.7.10</span>
+						</button>
+					</h2>
+					<div id="forge7" class="accordion-collapse collapse" data-bs-parent="#changelog">
+						<div class="accordion-body">
+							<pre class="code-added line-numbers"><code class="language-processing">- None</code></pre>
+							<pre class="code-removed line-numbers"><code class="language-processing">- Removed message about incompatibility with FORGE version</code></pre>
+							<pre class="code-fixed line-numbers"><code class="language-processing">- None</code></pre>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	
+	<script src="assets/js/jquery.js"></script>
+	<script src="assets/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/js/offcanvas.js"></script>
+	<script src="assets/js/prism.js"></script>
+</body>
+</html>
