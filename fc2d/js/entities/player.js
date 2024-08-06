@@ -19,16 +19,16 @@ class Player extends EntityBase {
         const speed = this.speed / 100;
         switch (direction) {
             case 'left':
-                this.position[0] = parseFloat((this.position[0] - speed).toFixed(2));
+                this.position[0] -= speed; // Двигаемся влево по оси X
                 break;
             case 'right':
-                this.position[0] = parseFloat((this.position[0] + speed).toFixed(2));
+                this.position[0] += speed; // Двигаемся вправо по оси X
                 break;
             case 'up':
-                this.position[2] = parseFloat((this.position[2] - speed).toFixed(2));
+                this.position[2] += speed; // Двигаемся вперед по оси Z
                 break;
             case 'down':
-                this.position[2] = parseFloat((this.position[2] + speed).toFixed(2));
+                this.position[2] -= speed; // Двигаемся назад по оси Z
                 break;
         }
         this.mesh.position = new BABYLON.Vector3(this.position[0], this.position[1], this.position[2]);
