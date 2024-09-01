@@ -2,7 +2,11 @@ document.addEventListener("DOMContentLoaded", function() {
     // Получаем параметры из URL
     const urlParams = new URLSearchParams(window.location.search);
     const dataFile = urlParams.get('dataFile'); // Параметр dataFile из URL
-
+    
+    // Указываем путь относительно корневого каталога
+    const dataFilePath = `/assets/json/minecraft/${dataFileParam}.json`;
+    
+    // Теперь используем dataFilePath для получения данных
     const errorMessageElement = document.getElementById('error-message');
     const listElement = document.getElementById('list');
 
