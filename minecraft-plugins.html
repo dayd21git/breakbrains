@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="BreakBrains - developments for minecraft" />
+    <meta name="keywords" content="break, brains, minecraft, mods, fixes, брейк, брейнс, мод, фиксы, майнкрафт" />
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <title>BreakBrains - developments for games</title>
+    <link href="assets/css/offcanvas.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/prism.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/img/logo.png" />
+</head>
+  
+<body class="bg-light">
+	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="index.html">Break Brains</a>
+			<button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Addons</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown01">
+							<li><a class="dropdown-item" href="minecraft-mods.html">Minecraft Mods</a></li>
+							<li><a class="dropdown-item" href="minecraft-plugins.html"><s>Minecraft Plugins</s></a></li>
+						</ul>
+					</li>
+				</ul>
+				<form class="d-flex">
+					<input class="form-control me-2" type="search" id="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success" id="btn-search" type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+
+	<div class="nav-scroller bg-body shadow-sm">
+		<nav class="nav nav-underline" aria-label="Secondary navigation">
+			<a class="nav-link" href="#">Views: <span class="badge bg-light text-dark rounded-pill align-text-bottom">0</span></a>
+		</nav>
+	</div>
+	
+	<main class="container my-3">
+		<div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+			<img class="me-3" src="assets/img/fixes-forge.jpg" alt="" width="38" height="38">
+			<div class="lh-1">
+				<h1 class="h6 mb-0 text-white lh-1">[BreakBrains] Plugins Pack</h1>
+				<small>Плагины для вашего сервера / Plugins for your server</small>
+			</div>
+		</div>
+    
+		
+  		<div class="my-3 p-3 bg-body rounded shadow-sm">
+  			<h6 class="border-bottom pb-2 mb-0">Plugins:</h6>
+        <template id="item-template">
+    			<a href="{KEY}.html">
+    				<div class="mod-hover border-bottom d-flex text-muted pt-2">
+    					<img class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="assets/img/mods/{KEY}.png">
+    					<div class="pb-2 mb-0 small lh-sm w-100">
+    						<div class="d-flex justify-content-between"><strong class="text-gray-dark">{NAME}</strong></div>
+    						<span class="d-block">{DESCRIPTION}</span>
+    					</div>
+    				</div>
+    			</a>
+        </template>
+      </div>
+  </main>
+		
+		<div class="mt-4 mb-2 p-3 bg-body rounded shadow-sm text-center"><small>
+			<a href="https://discord.gg/cNSsxEU2fP" target="_blank">Discord</a> | 
+			<a href="https://bit.ly/ru-host" target="_blank">VDS Hosting</a><br>
+		</small></div>
+	</main>
+	
+	<script src="assets/js/jquery.js"></script>
+	<script src="assets/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/js/offcanvas.js"></script>
+	<script src="assets/js/prism.js"></script>
+</body>
+</html>
