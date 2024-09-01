@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('data.json')
+    fetch('plugins.json')
         .then(response => response.json())
         .then(data => {
             const listElement = document.getElementById('list');
