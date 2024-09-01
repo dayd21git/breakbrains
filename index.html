@@ -3,13 +3,85 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="BreakBrains - developments for games" />
+    <meta name="description" content="BreakBrains - developments for minecraft" />
     <meta name="keywords" content="break, brains, minecraft, mods, fixes, брейк, брейнс, мод, фиксы, майнкрафт" />
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <title>BreakBrains - developments for games</title>
+    <link href="assets/css/offcanvas.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/prism.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/img/logo.png" />
 </head>
   
 <body class="bg-light">
-	<center><h2>BreakBrains<h2/><center><br>
-	<a href="http://45.93.200.190:8123/">MAP (Карта)</a>
+	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="index.html">Break Brains</a>
+			<button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Addons</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown01">
+							<li><a class="dropdown-item" href="minecraft-mods.html">Minecraft Mods</a></li>
+							<li><a class="dropdown-item" href="minecraft-plugins.html"><s>Minecraft Plugins</s></a></li>
+						</ul>
+					</li>
+				</ul>
+				<form class="d-flex">
+					<input class="form-control me-2" type="search" id="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success" id="btn-search" type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+
+	<div class="nav-scroller bg-body shadow-sm">
+		<nav class="nav nav-underline" aria-label="Secondary navigation">
+			<a class="nav-link" href="#">Views: <span class="badge bg-light text-dark rounded-pill align-text-bottom">0</span></a>
+		</nav>
+	</div>
+	
+	<main class="container">
+		<div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+			<img class="me-3" src="assets/img/logo.png" alt="" width="38" height="38">
+			<div class="lh-1">
+				<h1 class="h6 mb-0 text-white lh-1">Break Brains</h1>
+				<small>More Developments For You</small>
+			</div>
+		</div>
+		
+		<div class="p-3 bg-body rounded shadow-sm">
+			<p><center><img class="img-responsive" src="assets/img/banner.jpg"></center></p>
+			<p><center><img class="img-responsive" src="assets/img/about.jpg"></center></p>
+			<p>
+				<b>EN:</b> On this site you can find fixes for developments that were abandoned by the authors, as well as take advantage of any other content that is on our site!
+				If you have ideas, wishes, suggestions, or have found bugs in plugins, or mod, or scripts, please let us know on our discord server!<br>
+				<span class="text-danger">Attention!</span> If you are the developer of one of the works published here and want your work to be removed, write to us and
+				we will remove it immediately if you confirm your rights!
+			</p>
+			<p>
+				<b>RU:</b> На данном сайте вы можете найти фиксы и порты для разработок, которые были заброшены их авторами по разным причинам. Так же вы можете найти здесь и
+				некоторые другие работы для себя. Если у вас есть идеи, предложения, претензии или вам нужен фикс бага, пишите в наш дискорд!<br>
+				<span class="text-danger">Внимание! </span> Не каждый разработчик, чья работа была опубликована здесь, согласен с таким решением и просит удалить его разработку.
+				Если вы являетесь одним из таких людей, напишите нам об этом и мы удалим вашу разработку с нашего сайта!
+			</p>
+			<p><center><img class="img-responsive" src="assets/img/content.jpg"></center></p>
+			<p>Below we provide some examples of errors and their fixes.</p>
+		</div>
+		
+		<div class="mt-4 mb-2 p-3 bg-body rounded shadow-sm text-center"><small>
+			<a href="https://discord.gg/cNSsxEU2fP" target="_blank">Discord</a> | 
+			<a href="https://bit.ly/ru-host" target="_blank">VDS Hosting</a><br>
+		</small></div>
+	</main>
+	
+	<script src="assets/js/jquery.js"></script>
+	<script src="assets/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/js/offcanvas.js"></script>
+	<script src="assets/js/prism.js"></script>
 </body>
 </html>
