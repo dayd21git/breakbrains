@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     let itemHtml = template
                         .replace(/{KEY}/g, key)
                         .replace(/{NAME}/g, item.name)
-                        .replace(/{DESCRIPTION}/g, item.Description);
+                        .replace(/{DESCRIPTION}/g, item.description);
 
                     // Создаем новый элемент и добавляем его в список
                     const itemElement = document.createElement('div');
