@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return;
     }
 
-    fetch("assets/js/minecraft/" + dataFile + ".json")
+    fetch(dataFile)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
