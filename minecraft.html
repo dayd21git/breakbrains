@@ -81,6 +81,28 @@
 	<script src="assets/js/bootstrap.bundle.min.js"></script>
 	<script src="assets/js/offcanvas.js"></script>
 	<script src="assets/js/prism.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+		    const menuItems = document.querySelectorAll('.dropdown-item');
+	
+		    menuItems.forEach(item => {
+			item.addEventListener('click', function(event) {
+			    event.preventDefault(); // Отключаем стандартное действие ссылки
+	
+			    const page = this.getAttribute('data-page');
+			    const dataFile = this.getAttribute('data-file');
+	
+			    if (page && dataFile) {
+				// Строим URL для редиректа
+				const newUrl = `${page}.html?dataFile=${dataFile}`;
+	
+				// Редирект на новый URL
+				window.location.href = newUrl;
+			    }
+			});
+		    });
+		});
+	</script>
 	<script src="assets/js/load-items.js"></script>
 </body>
 </html>
