@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     // Указываем путь относительно корневого каталога
-    const dataFilePath = `/assets/json/minecraft/${dataFile}.json`;
+    const dataFilePath = `/breakbrains/assets/json/minecraft/${dataFile}.json`;
     
     // Теперь используем dataFilePath для получения данных
     const errorMessageElement = document.getElementById('error-message');
