@@ -1,5 +1,18 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('plugins.json')
+    // Получаем параметры из URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const dataFile = urlParams.get('dataFile'); // Параметр dataFile из URL
+
+    const errorMessageElement = document.getElementById('error-message');
+    const listElement = document.getElementById('list');
+
+    if (!dataFile) {
+        errorMessageElement.textContent = 'JSON file parameter is missing in the URL';
+        errorMessageElement.style.display = 'block';
+        return;
+    }
+
+    fetch(dataFile + ".json")
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -7,21 +20,23 @@ document.addEventListener("DOMContentLoaded", function() {
             return response.json();
         })
         .then(data => {
-            const listElement = document.getElementById('list');
             if (!listElement) {
-                console.error('Element with id "list" not found');
+                errorMessageElement.textContent = 'Element with id "list" not found';
+                errorMessageElement.style.display = 'block';
                 return;
             }
 
             const template = document.getElementById('item-template');
             if (!template) {
-                console.error('Template with id "item-template" not found');
+                errorMessageElement.textContent = 'Template with id "item-template" not found';
+                errorMessageElement.style.display = 'block';
                 return;
             }
 
             const templateContent = template.innerHTML;
 
             // Пройдемся по каждому ключу в JSON
+            let hasData = false;
             for (const key in data) {
                 if (data.hasOwnProperty(key)) {
                     const item = data[key];
@@ -34,8 +49,17 @@ document.addEventListener("DOMContentLoaded", function() {
                     const itemElement = document.createElement('div');
                     itemElement.innerHTML = itemHtml;
                     listElement.appendChild(itemElement);
+                    hasData = true;
                 }
             }
+
+            if (!hasData) {
+                errorMessageElement.textContent = 'No data found in JSON file';
+                errorMessageElement.style.display = 'block';
+            }
         })
-        .catch(error => console.error('Error loading JSON:', error));
+        .catch(error => {
+            errorMessageElement.textContent = `Error loading JSON: ${error.message}`;
+            errorMessageElement.style.display = 'block';
+        });
 });
