@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const dataFile = urlParams.get('dataFile'); // Параметр dataFile из URL
     
     // Указываем путь относительно корневого каталога
-    const dataFilePath = `/assets/json/minecraft/${dataFileParam}.json`;
+    const dataFilePath = `/assets/json/minecraft/${dataFile}.json`;
     
     // Теперь используем dataFilePath для получения данных
     const errorMessageElement = document.getElementById('error-message');
