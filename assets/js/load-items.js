@@ -3,6 +3,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const dataFile = urlParams.get('dataFile'); // Параметр dataFile из URL
     
+    if (!dataFile) {
+        errorMessageElement.textContent = 'JSON file parameter is missing in the URL';
+        errorMessageElement.style.display = 'block';
+        return;
+    }
+    
     // Указываем путь относительно корневого каталога
     const dataFilePath = `/assets/json/minecraft/${dataFile}.json`;
     
@@ -10,13 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const errorMessageElement = document.getElementById('error-message');
     const listElement = document.getElementById('list');
 
-    if (!dataFile) {
-        errorMessageElement.textContent = 'JSON file parameter is missing in the URL';
-        errorMessageElement.style.display = 'block';
-        return;
-    }
-
-    fetch(dataFile)
+    fetch(dataFilePath)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
