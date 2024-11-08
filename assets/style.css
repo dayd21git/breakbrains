@@ -1,0 +1,209 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+*, *:visited, *:hover, *:active {
+	border: none;
+    text-decoration: none !important;
+}
+
+body, html {
+    height: 100%;
+    font-family: Tahoma, sans-serif;
+}
+
+body {
+	background-size: cover;
+	background-position: center;
+	color: white;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+a {
+	color: white;
+	padding: 2px 0 3px 0;
+	border-bottom: 2px solid rgba(0,0,0,0);
+}
+
+a:hover {
+	border-bottom: 2px solid #ff7e5f;
+}
+
+button {
+	color: white;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+img.icon {
+	height: 32px;
+	width: 32px;
+	opacity: 0.5;
+}
+
+img.icon:hover {
+	opacity: 1.0;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+
+.head {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    color: #fff;
+}
+
+.logo {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.menu nav a {
+    color: #fff;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.menu nav a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    padding: 12px 0 5px 0;
+}
+
+.social-icon {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 1.5em;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: #007bff;
+}
+
+/* Затемнение фона */
+.modal-overlay {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Поверх основного контента */
+}
+
+.btn-small {
+	font-size: 1rem;
+	font-weight: bold;
+	background: linear-gradient(to right, #FCA664, #FF5C38);
+	border-radius: 5px;
+	margin: 5px;
+	padding: 8px 15px 11px 15px;
+}
+
+.btn-small:hover {
+	background: linear-gradient(to right, #feb47b, #ff7e5f);
+}
+
+.btn-middle {
+	font-size: 1.1rem;
+	font-weight: bold;
+	background: linear-gradient(to right, #FCA664, #FF5C38);
+	border-radius: 5px;
+	margin: 10px;
+	padding: 15px 30px 18px 30px;
+}
+
+.btn-middle:hover {
+	background: linear-gradient(to right, #feb47b, #ff7e5f);
+}
+
+.modal-content {
+    background: white;
+    width: 520px;
+    max-width: 80%;
+    max-height: 80vh;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    overflow-y: auto;
+	color: #ff7e5f;
+	border-radius: 5px;
+}
+
+.modal-title {
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: left;
+	color: black;
+}
+
+.modal-content p {
+    padding: 5px;
+    text-align: left;
+	margin-top: 5px;
+}
+
+.modal-content p b {
+    color: #BF4A2F;
+}
+
+ul, li, ol {
+	padding: 3px 10px;
+    text-align: left;
+	list-style-position: inside;
+}
+
+ul {
+	padding: 5px 0;
+	background: rgba(0, 0, 0, 0.05);
+	border-radius: 5px;
+	margin-top: 5px;
+}
