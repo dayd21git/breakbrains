@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Товары и Материалы</title>
+<style>
+  body { 
+    font-family: 'Inter', Arial, sans-serif; 
+    margin: 0; 
+    background: linear-gradient(135deg, #3B1E87 0%, #5E35B1 100%); 
+    color: #E0E7FF;
+    line-height: 1.6;
+  }
+  .tabs { 
+    display: flex; 
+    justify-content: center; 
+    gap: 12px; 
+    padding: 20px 0;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+  }
+  .tab { 
+    padding: 12px 30px; 
+    cursor: pointer; 
+    border: 2px solid #7C4DFF; 
+    border-radius: 25px; 
+    background: transparent; 
+    color: #E0E7FF; 
+    font-weight: 600; 
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  .tab:hover {
+    background: rgba(124, 77, 255, 0.1);
+    transform: translateY(-2px);
+  }
+  .tab.active { 
+    background: #7C4DFF; 
+    color: #fff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  .tab-content { 
+    margin: 20px;
+    padding: 25px; 
+    border: 2px solid #7C4DFF; 
+    border-radius: 20px; 
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  .hidden { display: none !important; }
+  .buttons { 
+    display: flex; 
+    gap: 10px; 
+    margin-bottom: 15px; 
+  }
+  .buttons button { 
+    padding: 8px 16px; 
+    border: none; 
+    border-radius: 8px; 
+    background: #7C4DFF; 
+    color: #fff; 
+    cursor: pointer; 
+    font-weight: 600; 
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  .buttons button:hover {
+    background: #9F7AEA;
+    transform: translateY(-2px);
+  }
+  .item { 
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 10px; 
+    padding: 10px; 
+    border-radius: 10px; 
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+  }
+  .item:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .item img { 
+    width: 28px; 
+    height: 28px; 
+    margin-right: 12px; 
+    border-radius: 4px;
+  }
+  .modal { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 1000;
+  }
+  .modal.hidden { display: none !important; }
+  .modal-content { 
+    background: #3B1E87; 
+    color: #E0E7FF; 
+    padding: 25px; 
+    border-radius: 15px; 
+    width: 400px; 
+    max-width: 90%; 
+    max-height: 80vh; 
+    overflow-y: auto; 
+    border: 2px solid #7C4DFF; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  .modal-content h3 {
+    margin: 0 0 15px;
+    font-size: 1.5rem;
+    color: #fff;
+  }
+  .modal-content label { 
+    display: block; 
+    margin: 12px 0 5px; 
+    font-weight: 500; 
+  }
+  .modal-content input, .modal-content select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #7C4DFF;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #E0E7FF;
+    font-size: 1rem;
+  }
+  .modal-content input:focus, .modal-content select:focus {
+    outline: none;
+    border-color: #B388FF;
+    box-shadow: 0 0 5px rgba(179, 136, 255, 0.5);
+  }
+  .modal-content button {
+    padding: 10px 20px;
+    margin: 15px 5px 0 0;
+    border: none;
+    border-radius: 8px;
+    background: #7C4DFF;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  .modal-content button:hover {
+    background: #9F7AEA;
+    transform: translateY(-2px);
+  }
+  .modal-content button:last-child {
+    background: #EF5350;
+  }
+  .modal-content button:last-child:hover {
+    background: #FF6E6B;
+  }
+  .product-card { 
+    background: rgba(255, 255, 255, 0.1); 
+    color: #E0E7FF; 
+    border: 2px solid #7C4DFF; 
+    padding: 15px; 
+    margin-bottom: 15px; 
+    border-radius: 15px; 
+    width: 320px; 
+    max-width: 100%; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  .product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  .product-card img { 
+    max-width: 120px; 
+    max-height: 120px; 
+    display: block; 
+    margin: 0 auto 10px; 
+    border-radius: 8px;
+  }
+  .product-card h4 {
+    margin: 0 0 10px;
+    font-size: 1.25rem;
+    color: #fff;
+  }
+  .resources { 
+    margin-top: 15px; 
+    padding-top: 10px; 
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .resource { 
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 8px; 
+  }
+  .resource img { 
+    width: 24px; 
+    height: 24px; 
+    margin-right: 8px; 
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="tabs">
+  <div class="tab active" data-tab="products">Товары</div>
+  <div class="tab" data-tab="materials">Материалы</div>
+</div>
+
+<div id="products" class="tab-content">
+  <div class="buttons">
+    <button id="addProductBtn">Добавить</button>
+    <button id="loadProductBtn">Загрузить</button>
+    <button id="saveProductBtn">Сохранить</button>
+    <input type="file" id="productFileInput" accept="application/json" style="display:none">
+  </div>
+  <div id="productsList"></div>
+</div>
+
+<div id="materials" class="tab-content hidden">
+  <div class="buttons">
+    <button id="addMaterialBtn">Добавить</button>
+    <button id="loadMaterialBtn">Загрузить</button>
+    <button id="saveMaterialBtn">Сохранить</button>
+    <input type="file" id="materialFileInput" accept="application/json" style="display:none">
+  </div>
+  <div id="materialsList"></div>
+</div>
+
+<div id="materialModal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Добавить материал</h3>
+    <label>Название: <input type="text" id="materialName"></label>
+    <label>URL иконки: <input type="text" id="materialIcon"></label>
+    <label>Цена: <input type="number" id="materialPrice"></label>
+    <div>
+      <button id="saveMaterial">Сохранить</button>
+      <button id="cancelMaterial">Отмена</button>
+    </div>
+  </div>
+</div>
+
+<div id="productModal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Добавить товар</h3>
+    <label>Название: <input type="text" id="productName"></label>
+    <label>URL картинки: <input type="text" id="productIcon"></label>
+    <div id="productMaterials"></div>
+    <button id="addProductMaterial">Добавить материал</button>
+    <div>
+      <button id="saveProduct">Готово</button>
+      <button id="cancelProduct">Отмена</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Ваш исходный JavaScript код без изменений
+const defaultMaterials = [
+  { name: "Дерево", icon: "wood.png", price: 100 },
+  { name: "Камень", icon: "stone.png", price: 50 },
+  { name: "Металл", icon: "metal.png", price: 200 }
+];
+
+let cachedMaterials = JSON.parse(localStorage.getItem("materials")) || [];
+cachedMaterials = cachedMaterials.filter(cm => 
+  !defaultMaterials.some(dm => dm.name === cm.name)
+);
+let materials = [...defaultMaterials, ...cachedMaterials];
+
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+function saveMaterials() {
+  const extras = materials.filter(m => 
+    !defaultMaterials.some(dm => dm.name === m.name)
+  );
+  localStorage.setItem("materials", JSON.stringify(extras));
+}
+function saveProducts() {
+  localStorage.setItem("products", JSON.stringify(products));
+}
+
+function renderMaterials() {
+  const list = document.getElementById("materialsList");
+  list.innerHTML = "";
+  materials.forEach(m => {
+    const div = document.createElement("div");
+    div.className = "item";
+    const img = document.createElement("img");
+    img.src = m.icon || "https://via.placeholder.com/24";
+    const span = document.createElement("span");
+    span.textContent = `${m.name} — ${m.price}`;
+    div.appendChild(img);
+    div.appendChild(span);
+    list.appendChild(div);
+  });
+}
+
+function renderProducts() {
+  const list = document.getElementById("productsList");
+  list.innerHTML = "";
+  products.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    const img = document.createElement("img");
+    img.src = p.icon || "https://via.placeholder.com/100";
+    const title = document.createElement("h4");
+    title.textContent = p.name;
+    card.appendChild(img);
+    card.appendChild(title);
+
+    const resourcesDiv = document.createElement("div");
+    resourcesDiv.className = "resources";
+    let total = 0;
+    p.resources.forEach(r => {
+      const mat = materials.find(m => m.name === r.material);
+      if (!mat) return;
+      const cost = mat.price * r.quantity;
+      total += cost;
+      const resDiv = document.createElement("div");
+      resDiv.className = "resource";
+      const resImg = document.createElement("img");
+      resImg.src = mat.icon || "https://via.placeholder.com/20";
+      const resSpan = document.createElement("span");
+      resSpan.textContent = `${mat.name} × ${r.quantity} = ${cost}`;
+      resDiv.appendChild(resImg);
+      resDiv.appendChild(resSpan);
+      resourcesDiv.appendChild(resDiv);
+    });
+    card.appendChild(resourcesDiv);
+
+    const totalDiv = document.createElement("div");
+    totalDiv.textContent = "Итого: " + total;
+    card.appendChild(totalDiv);
+
+    list.appendChild(card);
+  });
+}
+
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+    document.querySelectorAll(".tab-content").forEach(c => c.classList.add("hidden"));
+    document.getElementById(tab.dataset.tab).classList.remove("hidden");
+  });
+});
+
+document.getElementById("addMaterialBtn").addEventListener("click", () => {
+  document.getElementById("materialModal").classList.remove("hidden");
+});
+document.getElementById("cancelMaterial").addEventListener("click", () => {
+  document.getElementById("materialModal").classList.add("hidden");
+});
+document.getElementById("saveMaterial").addEventListener("click", () => {
+  const name = document.getElementById("materialName").value.trim();
+  const icon = document.getElementById("materialIcon").value.trim();
+  const price = parseFloat(document.getElementById("materialPrice").value);
+  if (!name || isNaN(price)) return;
+  if (materials.some(m => m.name === name)) return;
+  materials.push({ name, icon, price });
+  saveMaterials();
+  renderMaterials();
+  document.getElementById("materialModal").classList.add("hidden");
+  document.getElementById("materialName").value = "";
+  document.getElementById("materialIcon").value = "";
+  document.getElementById("materialPrice").value = "";
+});
+
+document.getElementById("saveMaterialBtn").addEventListener("click", () => {
+  const blob = new Blob([JSON.stringify(materials, null, 2)], {type : "application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "materials.json";
+  a.click();
+});
+document.getElementById("loadMaterialBtn").addEventListener("click", () => {
+  document.getElementById("materialFileInput").click();
+});
+document.getElementById("materialFileInput").addEventListener("change", e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = evt => {
+    try {
+      const data = JSON.parse(evt.target.result);
+      if (Array.isArray(data)) {
+        data.forEach(m => {
+          if (!materials.some(x => x.name === m.name)) {
+            materials.push(m);
+          }
+        });
+        saveMaterials();
+        renderMaterials();
+      }
+    } catch {}
+  };
+  reader.readAsText(file);
+});
+
+document.getElementById("addProductBtn").addEventListener("click", () => {
+  document.getElementById("productModal").classList.remove("hidden");
+  document.getElementById("productName").value = "";
+  document.getElementById("productIcon").value = "";
+  document.getElementById("productMaterials").innerHTML = "";
+});
+document.getElementById("cancelProduct").addEventListener("click", () => {
+  document.getElementById("productModal").classList.add("hidden");
+});
+document.getElementById("addProductMaterial").addEventListener("click", () => {
+  const container = document.createElement("div");
+  const select = document.createElement("select");
+  materials.forEach(m => {
+    const option = document.createElement("option");
+    option.value = m.name;
+    option.textContent = m.name;
+    select.appendChild(option);
+  });
+  const qty = document.createElement("input");
+  qty.type = "number";
+  qty.min = 1;
+  qty.value = 1;
+  container.appendChild(select);
+  container.appendChild(qty);
+  document.getElementById("productMaterials").appendChild(container);
+});
+document.getElementById("saveProduct").addEventListener("click", () => {
+  const name = document.getElementById("productName").value.trim();
+  const icon = document.getElementById("productIcon").value.trim();
+  const resources = [];
+  document.querySelectorAll("#productMaterials div").forEach(div => {
+    const material = div.querySelector("select").value;
+    const quantity = parseInt(div.querySelector("input").value);
+    if (material && quantity > 0) {
+      resources.push({ material, quantity });
+    }
+  });
+  if (!name) return;
+  products.push({ name, icon, resources });
+  saveProducts();
+  renderProducts();
+  document.getElementById("productModal").classList.add("hidden");
+});
+
+document.getElementById("saveProductBtn").addEventListener("click", () => {
+  const blob = new Blob([JSON.stringify(products, null, 2)], {type : "application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "products.json";
+  a.click();
+});
+document.getElementById("loadProductBtn").addEventListener("click", () => {
+  document.getElementById("productFileInput").click();
+});
+document.getElementById("productFileInput").addEventListener("change", e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = evt => {
+    try {
+      const data = JSON.parse(evt.target.result);
+      if (Array.isArray(data)) {
+        products = data;
+        saveProducts();
+        renderProducts();
+      }
+    } catch {}
+  };
+  reader.readAsText(file);
+});
+
+renderMaterials();
+renderProducts();
+</script>
+</body>
+</html>
