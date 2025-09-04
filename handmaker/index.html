@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HandMaker</title>
+<title>Товары и Материалы</title>
 <style>
 body { min-width: 320px; overflow-x: auto; font-family: 'Inter', Arial, sans-serif; margin: 0; background: #E5DDFF; line-height: 1.6; }
 .tabs { display: flex; justify-content: center; gap: 12px; padding: 20px 0; background: #CDBFFF; backdrop-filter: blur(5px); }
@@ -38,13 +38,13 @@ body { min-width: 320px; overflow-x: auto; font-family: 'Inter', Arial, sans-ser
 .modal-content button:last-child { background: #EF5350; }
 .modal-content button:last-child:hover { background: #FF6E6B; }
 #productsList, #materialsList { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px; }
-.product-card { display: flex; flex-direction: column; background: rgba(255,255,255,0.1); border: 2px solid #7C4DFF; border-radius: 15px; overflow: hidden; width: 45%; min-width: 320px; max-width: 100%; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: all 0.3s ease; position: relative; }
+.product-card { display: flex; flex-direction: column; background: rgba(255,255,255,0.1); border: 2px solid #7C4DFF; border-radius: 15px; overflow: hidden; width: 320px; max-width: 100%; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: all 0.3s ease; position: relative; }
 .product-card:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.3); }
 .product-image { position: relative; width: 100%; height: 200px; overflow: hidden; }
 .product-image img { width: 100%; height: 100%; object-fit: cover; }
 .product-title { position: absolute; bottom: 0; left: 0; width: 100%; padding: 8px 12px; background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.04)); color: #fff; font-size: 1rem; font-weight: 600; box-sizing: border-box; }
 .card-actions { display: flex; gap: 6px; position: absolute; top: 8px; right: 8px; }
-.product-info { flex: 1; background: #fff; color: #333; padding: 10px; font-size: 13px; }
+.product-info { flex: 1; background: #fff; color: #333; padding: 10px; }
 .resources { margin-top: 10px; }
 .resource { display: flex; align-items: center; margin-bottom: 6px; }
 .resource img { width: 20px; height: 20px; margin-right: 8px; }
@@ -119,25 +119,20 @@ const defaultMaterials = [
   { name: "Час работы", icon: "jobprice.png", price: 7 }
 ];
 
-// Инициализация материалов
 let materials = [];
 try {
   const storedMaterials = JSON.parse(localStorage.getItem("materials"));
   if (Array.isArray(storedMaterials) && storedMaterials.length > 0) {
-    // Используем сохраненные материалы
     materials = [...storedMaterials];
-    // Добавляем новые материалы из defaultMaterials, если их нет в storedMaterials
     defaultMaterials.forEach(defaultMat => {
       if (!materials.some(m => m.name === defaultMat.name)) {
         materials.push({ ...defaultMat });
       }
     });
   } else {
-    // Если localStorage пуст или некорректен, используем defaultMaterials
     materials = [...defaultMaterials];
   }
 } catch (e) {
-  // В случае ошибки парсинга используем defaultMaterials
   materials = [...defaultMaterials];
 }
 
@@ -304,7 +299,7 @@ function renderProducts() {
         total += cost;
         resImg.src = mat.icon || "noimage.jpg";
         nameSpan.textContent = mat.name;
-        priceSpan.textContent = `${mat.price}💵 × ${r.quantity} = ${cost}💵`;
+        priceSpan.textContent = `${mat.price}💵 × ${r.quantity} = ${Math.round(cost)}💵`;
       } else {
         resImg.src = "noimage.jpg";
         nameSpan.textContent = "Неизвестно";
@@ -321,7 +316,7 @@ function renderProducts() {
 
     const totalDiv = document.createElement("div");
     totalDiv.className = "total";
-    totalDiv.textContent = "Итого: " + total + " (+~" + (total * 0.02) + ") 💵";
+    totalDiv.textContent = "Итого: " + total.toFixed(2) + " (+~" + (total * 0.02).toFixed(2) + ") 💵";
 
     info.appendChild(resourcesDiv);
     info.appendChild(totalDiv);
@@ -413,7 +408,7 @@ document.getElementById("materialFileInput").addEventListener("change", e => {
             newMaterials.push({ name: m.name, icon: m.icon || "", price: m.price });
           }
         });
-        materials = [...newMaterials]; // Заменяем текущие материалы новыми
+        materials = [...newMaterials];
         saveMaterials();
         renderMaterials();
         renderProducts();
@@ -425,7 +420,7 @@ document.getElementById("materialFileInput").addEventListener("change", e => {
       alert("Ошибка при загрузке файла материалов!");
       console.error("Ошибка загрузки файла материалов");
     }
-    e.target.value = ""; // Сбрасываем значение input
+    e.target.value = "";
   };
   reader.readAsText(file);
 });
@@ -533,7 +528,7 @@ document.getElementById("productFileInput").addEventListener("change", e => {
       alert("Ошибка при загрузке файла продуктов!");
       console.error("Ошибка загрузки файла продуктов");
     }
-    e.target.value = ""; // Сбрасываем значение input
+    e.target.value = "";
   };
   reader.readAsText(file);
 });
@@ -543,4 +538,3 @@ renderProducts();
 </script>
 </body>
 </html>
-
