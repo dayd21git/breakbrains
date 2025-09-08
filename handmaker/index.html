@@ -98,7 +98,7 @@ body { min-width: 320px; overflow-x: auto; font-family: 'Inter', Arial, sans-ser
     <label>Название: <input type="text" id="productName"></label>
     <label>URL картинки: <input type="text" id="productIcon"></label>
     <div id="productMaterials"></div>
-    <button id="addProductMaterial">Добавить материал</button>
+    <button id="addProductMaterial">Добавить ресурс</button>
     <div>
       <button id="saveProduct">Готово</button>
       <button id="cancelProduct">Отмена</button>
@@ -116,7 +116,7 @@ const defaultMaterials = [
   { name: "Пластик PETG (метр)", icon: "plastic-petg.png", price: 3.75 },
   { name: "Пластик PLA (метр)", icon: "plastic-pla.png", price: 2.82 },
   { name: "Пластик PLA (кг)", icon: "plastic-pla.png", price: 900 },
-  { name: "Час работы", icon: "jobprice.png", price: 7 }
+  { name: "Минута работы", icon: "jobprice.png", price: 1 }
 ];
 
 let materials = [];
@@ -538,4 +538,5 @@ renderProducts();
 </script>
 </body>
 </html>
+
 
