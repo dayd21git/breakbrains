@@ -326,6 +326,7 @@ body {
 }
 
 @media (max-width: 992px) {
+	.main-container { width: 90%; }
 	.header { flex-direction: column; gap: 15px; }
 	.nav-menu { flex-wrap: wrap; justify-content: center; }
 	.footer { flex-direction: column; gap: 15px; text-align: left; }
@@ -333,7 +334,7 @@ body {
 }
 
 @media (max-width: 768px) {
-	.main-container { width: 90%; }
+	.main-container { width: 100%; }
 	.slide-text { font-size: 1.5em; }
 	.blob { filter: blur(50px); }
 	.blob-1, .blob-2, .blob-3, .blob-4 { width: 200px; height: 200px; }
