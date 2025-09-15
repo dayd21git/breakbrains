@@ -1,101 +1,129 @@
 <style>
-    .monitoring {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-        align-items: center;
-    }
+	.monitoring {
+		display: flex;
+		flex-direction: column;
+		gap: 25px;
+		align-items: center;
+	}
 
-    .monitoring-header {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        background: rgba(255,255,255,0.05);
-        padding: 15px 20px;
-        border-radius: 10px;
-        width: 100%;
-        box-sizing: border-box;
-    }
+	.monitoring-header {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+		background: rgba(255,255,255,0.05);
+		padding: 15px 20px;
+		border-radius: 10px;
+		width: 100%;
+		box-sizing: border-box;
+	}
 
-    .monitoring-header h2 {
-        margin: 0;
-        font-size: 1.6em;
-    }
+	.monitoring-header h2 {
+		margin: 0;
+		font-size: 1.6em;
+	}
 
-    .monitoring-header .online-count {
-        font-size: 1.2em;
-        color: #fff;
-        margin-top: 10px;
-    }
+	.monitoring-header .online-count {
+		font-size: 1.2em;
+		color: #fff;
+		margin-top: 10px;
+	}
 
-    #total-online { color: #FF9400; }
+	#total-online { color: #FF9400; }
 
-    .monitoring-servers {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-        width: 100%;
-    }
+	.monitoring-servers {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+		justify-content: center;
+		width: 100%;
+	}
 
-    .server-card {
-        background: rgba(255,255,255,0.08);
-        backdrop-filter: blur(5px);
-        border-radius: 10px;
-        overflow: hidden;
-        width: 45%;
-        min-width: 200px;
-        max-width: 500px;
-        display: flex;
-        flex-direction: column;
-        color: white;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        transition: transform 0.3s;
-    }
+	.server-card {
+		background: rgba(255,255,255,0.08);
+		backdrop-filter: blur(5px);
+		border-radius: 10px;
+		overflow: hidden;
+		width: 45%;
+		min-width: 200px;
+		max-width: 500px;
+		display: flex;
+		flex-direction: column;
+		color: white;
+		box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+		transition: transform 0.3s;
+	}
 
-    .server-card:hover {
-        transform: translateY(-5px);
-    }
+	.server-card:hover {
+		transform: translateY(-5px);
+	}
 
-    .server-image {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-    }
+	.server-image {
+		width: 100%;
+		height: 150px;
+		object-fit: cover;
+	}
 
-    .server-body {
-        padding: 15px 20px;
-    }
+	.server-body {
+		padding: 15px 20px;
+	}
 
-    .server-title {
-        font-size: 1.4em;
-        margin-bottom: 10px;
-        color: #FF9400;
-    }
+	.server-title {
+		font-size: 1.4em;
+		margin-bottom: 10px;
+		color: #FF9400;
+	}
 
-    .server-desc {
-        font-size: 0.95em;
-        margin-bottom: 15px;
-    }
+	.server-desc {
+		font-size: 0.95em;
+		margin-bottom: 15px;
+	}
 
-    .server-online {
-        font-size: 0.9em;
-        color: #ccc;
-    }
+	.server-online {
+		font-size: 0.9em;
+		color: #ccc;
+	}
 
-    @media (max-width: 768px) {
-        .monitoring-header {
-            flex-direction: column;
-            align-items: flex-start;
-        }
+	@media (max-width: 768px) {
+		.monitoring-header {
+			flex-direction: column;
+			align-items: flex-start;
+		}
 
-        .monitoring-header .online-count {
-            margin-top: 5px;
-        }
+		.monitoring-header .online-count {
+			margin-top: 5px;
+		}
 
-        .server-card {
-            width: 90%;
-        }
-    }
+		.server-card {
+			width: 90%;
+		}
+	}
 </style>
+<div class="hr"></div>
+
+<div class="monitoring">
+	<div class="monitoring-header">
+		<h2>Мониторинг</h2>
+		<div class="online-count">Онлайн: <span id="total-online">?</span></div>
+	</div>
+	<div class="monitoring-servers">
+		<div class="server-card">
+			<img src="img/vanilla.jpg" alt="Vanilla Server" class="server-image">
+			<div class="server-body">
+				<div class="server-title">Vanilla</div>
+				<div class="server-desc">Классический сервер без модов. Чистый игровой процесс и честная конкуренция.</div>
+				<div class="server-online">Онлайн: <span class="server-online-count">?</span></div>
+			</div>
+		</div>
+		<div class="server-card">
+			<img src="img/forge.jpg" alt="Forge Server" class="server-image">
+			<div class="server-body">
+				<div class="server-title">Forge</div>
+				<div class="server-desc">Сервер с модами. Дополнительные возможности, крафт и уникальный опыт.</div>
+				<div class="server-online">Онлайн: <span class="server-online-count">?</span></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="hr"></div>
