@@ -131,37 +131,46 @@
             });
         
             const content = document.querySelector('.content');
-        
-            async function loadContent(page) {
-                try {
-                    const res = await fetch(page + '.html');
-                    if (!res.ok) throw new Error('Ошибка загрузки');
-                    
-                    const html = await res.text();
-                    content.innerHTML = html;
-                    if (typeof load === "function") load();
-                } catch {
-                    content.innerHTML = '<p>Не удалось загрузить страницу.</p>';
-                }
-            }
-        
-            function handleNavClick(e) {
-                if (e.target.tagName === 'A' && e.target.getAttribute('href').startsWith('#')) {
-                    e.preventDefault();
-                    const page = e.target.getAttribute('href').substring(1);
-                    loadContent(page);
-                }
-            }
-        
-            document.querySelector('.nav-menu').addEventListener('click', handleNavClick);
-            document.querySelector('.dropdown-menu').addEventListener('click', handleNavClick);
-        
-            if (!location.hash) {
-                loadContent('main');
-            } else {
-                loadContent(location.hash.substring(1));
-            }
-        });
+
+			async function loadContent(page) {
+				try {
+					const response = await fetch(`${page}.html`);
+					
+					if (!response.ok) {
+						throw new Error(`Страница ${page}.html не найдена (статус: ${response.status})`);
+					}
+					
+					const htmlContent = await response.text();
+					content.innerHTML = htmlContent;
+					
+					const scripts = content.querySelectorAll('script');
+					scripts.forEach(script => {
+						const func = new Function(script.textContent);
+						func();
+					});
+				} catch (error) {
+					console.error('Ошибка загрузки страницы:', error);
+					content.innerHTML = `<div class="error">Страница не найдна</div>`;
+				}
+			}
+
+			function handleNavClick(e) {
+				if (e.target.tagName === 'A' && e.target.getAttribute('href').startsWith('#')) {
+					e.preventDefault();
+					const page = e.target.getAttribute('href').substring(1);
+					loadContent(page);
+				}
+			}
+			
+			document.querySelector('.nav-menu').addEventListener('click', handleNavClick);
+			document.querySelector('.dropdown-menu').addEventListener('click', handleNavClick);
+		
+			if (!location.hash) {
+				loadContent('main');
+			} else {
+				loadContent(location.hash.substring(1));
+			}
+		});
     </script>
 </body>
 </html>
