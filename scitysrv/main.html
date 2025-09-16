@@ -61,58 +61,46 @@
 </div>
 
 <script>
-	document.addEventListener("DOMContentLoaded", () => {
-	  const serverUrls = [
-	    "http://ip:port/server1.json",
-	    "http://ip:port/server2.json"
-	  ];
-	
-	  const monitoringServersContainer = document.querySelector(".monitoring-servers");
-	  const totalOnlineElement = document.getElementById("total-online");
-	  const progressFillElement = document.querySelector(".progress-fill");
-	
-	  async function fetchServerData(url) {
-	    try {
-	      const response = await fetch(url);
-	      if (!response.ok) throw new Error("Network response was not ok");
-	      return await response.json();
-	    } catch (error) {
-	      console.error("Ошибка при получении данных сервера:", error);
-	      return null;
-	    }
-	  }
-	
-	  async function updateServers() {
-	    monitoringServersContainer.innerHTML = "";
-	    let totalOnline = 0;
-	    let totalMax = 0;
-	
-	    for (const url of serverUrls) {
-	      const server = await fetchServerData(url);
-	      if (!server) continue;
-	
-	      totalOnline += server.online;
-	      totalMax += server.max;
-	
-	      const card = document.createElement("div");
-	      card.className = "server-card";
-	      card.innerHTML = `
-	        <img src="${server.img}" alt="${server.name} Server" class="server-image">
-	        <div class="server-body">
-	          <div class="server-title">${server.name}</div>
-	          <div class="server-desc">${server.desc}</div>
-	          <div class="server-online">Онлайн: <span class="server-online-count">${server.online}</span> / ${server.max}</div>
-	        </div>
-	      `;
-	      monitoringServersContainer.appendChild(card);
-	    }
-	
-	    totalOnlineElement.textContent = totalOnline;
-	    const progressPercent = totalMax > 0 ? (totalOnline / totalMax) * 100 : 0;
-	    progressFillElement.style.width = `${progressPercent}%`;
-	  }
-	
-	  updateServers();
-	  setInterval(updateServers, 5000);
-	});
+document.addEventListener("DOMContentLoaded", () => {
+  const servers = [
+    { name: "Vanilla", img: "img/vanilla.jpg", desc: "Классический сервер", online: 12, max: 100 },
+    { name: "Forge", img: "img/forge.jpg", desc: "С модами", online: 34, max: 100 }
+  ];
+
+  const monitoringServersContainer = document.querySelector(".monitoring-servers");
+  const totalOnlineElement = document.getElementById("total-online");
+  const progressFillElement = document.querySelector(".progress-fill");
+
+  function updateServers() {
+    monitoringServersContainer.innerHTML = "";
+    let totalOnline = 0;
+    let totalMax = 0;
+
+    servers.forEach(server => {
+      totalOnline += server.online;
+      totalMax += server.max;
+
+      const card = document.createElement("div");
+      card.className = "server-card";
+      card.innerHTML = `
+        <img src="${server.img}" alt="${server.name} Server" class="server-image">
+        <div class="server-body">
+          <div class="server-title">${server.name}</div>
+          <div class="server-desc">${server.desc}</div>
+          <div class="server-online">Онлайн: <span class="server-online-count">${server.online}</span> / ${server.max}</div>
+        </div>
+      `;
+      monitoringServersContainer.appendChild(card);
+    });
+
+    totalOnlineElement.textContent = totalOnline;
+    const progressPercent = totalMax > 0 ? (totalOnline / totalMax) * 100 : 0;
+    progressFillElement.style.width = `${progressPercent}%`;
+  }
+
+  updateServers();
+  setInterval(updateServers, 5000);
+});
 </script>
+
+
