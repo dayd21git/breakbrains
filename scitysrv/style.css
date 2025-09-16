@@ -1,5 +1,5 @@
 @font-face { font-family: 'squartiqa_4f'; src: url('fonts/squartiqa_4f.woff2') format('truetype'); font-weight: normal; font-style: normal; }
-@font-face { font-family: 'Rubic'; src: url('fonts/rubic.woff2') format('truetype'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'Rubik'; src: url('fonts/rubik.woff2') format('truetype'); font-weight: normal; font-style: normal; }
 body { font-family: 'squartiqa_4f', Tahoma, sans-serif; margin: 0; padding: 20px; min-height: 100vh; display: flex; justify-content: center; align-items: center; overflow-x: hidden; background-color: #262626; position: relative; }
 .background-blobs { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
 .blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.6; }
@@ -54,4 +54,4 @@ body { font-family: 'squartiqa_4f', Tahoma, sans-serif; margin: 0; padding: 20px
 @media (max-width: 768px) { .main-container { width: 100%; } .slide-text { font-size: 1.5em; } .blob { filter: blur(50px); } .blob-1, .blob-2, .blob-3, .blob-4 { width: 200px; height: 200px; } .slider-control { width: 40px; height: 40px; } }
 .hr { height: 2px; background: linear-gradient(to right, transparent, #FF9400, transparent); margin: 25px 0; position: relative; }
 .hr::before { content: ""; position: absolute; top: 0; bottom: 0; width: 100%; }
-.section.content { font-family: Rubic, Arial; }
+.section.content { font-family: Rubik, Arial; }
