@@ -52,7 +52,7 @@
 	<div class="total-online-progress">
 		<div class="progress-header">
 			<span>Общий онлайн: </span>
-			<span id="total-online">0</span><span> / 100 игроков</span>
+			<span id="total-online">0</span><span></span>
 		</div>
 		<div class="progress-bar">
 			<div class="progress-fill" style="width: 0%"></div>
@@ -61,71 +61,75 @@
 </div>
 
 <script>
-    const serverUrls = [
-        "http://45.93.200.89:8123/server1.json",
-        "http://45.93.200.89:8123/server2.json"
-    ];
+	const servers = [
+		{ name: "Vanilla 1.21", img: "vanilla.jpg", desc: "Классический сервер без модов. Чистый игровой процесс и честная конкуренция.", ip: "45.93.200.89/25565" },
+		{ name: "Forge 1.20.1", img: "forge.jpg", desc: "Сервер с модами. Дополнительные возможности, крафт и уникальный опыт.", ip: "45.93.200.89/25566" }
+	];
 
-    const monitoringServersContainer = document.querySelector(".monitoring-servers");
-    const totalOnlineElement = document.getElementById("total-online");
-    const progressFillElement = document.querySelector(".progress-fill");
+	const monitoringServersContainer = document.querySelector(".monitoring-servers");
+	const totalOnlineElement = document.getElementById("total-online");
+	const progressFillElement = document.querySelector(".progress-fill");
 
-    if (!monitoringServersContainer || !totalOnlineElement || !progressFillElement) {
-        console.warn("Элементы мониторинга не найдены");
-        return;
-    }
+	if (!monitoringServersContainer || !totalOnlineElement || !progressFillElement) {
+		console.warn("Элементы мониторинга не найдены");
+	} else {
 
-    async function fetchServerData(url) {
-        try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`Ошибка загрузки: ${response.status}`);
-            }
-            return await response.json();
-        } catch (error) {
-            console.error(`Ошибка загрузки данных сервера ${url}:`, error);
-            return null;
-        }
-    }
+		async function fetchServerStatus(server) {
+			try {
+				const response = await fetch(`https://api.minetools.eu/ping/${server.ip}`);
+				if (!response.ok) throw new Error(`Ошибка загрузки: ${response.status}`);
+				const data = await response.json();
+				
+				return {
+					name: server.name,
+					img: server.img,
+					desc: server.desc,
+					online: data.players?.online || 0,
+					max: data.players?.max || 0
+				};
+			} catch (err) {
+				console.error(`Не удалось получить статус сервера ${server.name}:`, err);
+				return {
+					name: server.name,
+					img: server.img,
+					desc: server.desc,
+					online: 0,
+					max: 0
+				};
+			}
+		}
 
-    async function updateServers() {
-        try {
-            const serverPromises = serverUrls.map(url => fetchServerData(url));
-            const servers = await Promise.all(serverPromises);
-            
-            const validServers = servers.filter(server => server !== null);
-            
-            monitoringServersContainer.innerHTML = "";
-            let totalOnline = 0;
-            let totalMax = 0;
+		async function updateServers() {
+			const serverPromises = servers.map(server => fetchServerStatus(server));
+			const serverStatuses = await Promise.all(serverPromises);
 
-            validServers.forEach(server => {
-                totalOnline += server.online || 0;
-                totalMax += server.max || 0;
+			monitoringServersContainer.innerHTML = "";
+			let totalOnline = 0;
+			let totalMax = 0;
 
-                const card = document.createElement("div");
-                card.className = "server-card";
-                card.innerHTML = `
-                    <img src="${server.img || 'img/default.jpg'}" alt="${server.name || 'Server'} Server" class="server-image">
-                    <div class="server-body">
-                        <div class="server-title">${server.name || 'Сервер'}</div>
-                        <div class="server-desc">${server.desc || 'Описание недоступно'}</div>
-                        <div class="server-online">Онлайн: <span class="server-online-count">${server.online || 0}</span> / ${server.max || 0}</div>
-                    </div>
-                `;
-                monitoringServersContainer.appendChild(card);
-            });
+			serverStatuses.forEach(server => {
+				totalOnline += server.online;
+				totalMax += server.max;
 
-            totalOnlineElement.textContent = totalOnline;
-            const progressPercent = totalMax > 0 ? (totalOnline / totalMax) * 100 : 0;
-            progressFillElement.style.width = `${progressPercent}%`;
+				const card = document.createElement("div");
+				card.className = "server-card";
+				card.innerHTML = `
+					<img src="img/${server.img || 'default.jpg'}" alt="${server.name} Server" class="server-image">
+					<div class="server-body">
+						<div class="server-title">${server.name}</div>
+						<div class="server-desc">${server.desc}</div>
+						<div class="server-online">Онлайн: <span class="server-online-count">${server.online}</span> / ${server.max}</div>
+					</div>
+				`;
+				monitoringServersContainer.appendChild(card);
+			});
 
-        } catch (error) {
-            console.error("Ошибка обновления серверов:", error);
-            monitoringServersContainer.innerHTML = `<div class="error">Ошибка загрузки данных серверов</div>`;
-        }
-    }
-	
-    updateServers();
-    setInterval(updateServers, 5000);
+			totalOnlineElement.textContent = totalOnline + "/" + totalMax;
+			const progressPercent = totalMax > 0 ? (totalOnline / totalMax) * 100 : 0;
+			progressFillElement.style.width = `${progressPercent}%`;
+		}
+
+		updateServers();
+		setInterval(updateServers, 5000);
+	}
 </script>
