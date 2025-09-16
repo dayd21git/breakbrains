@@ -93,7 +93,7 @@
                   prev = document.querySelector('.prev'),
                   next = document.querySelector('.next');
             let i = 0, timer;
-
+        
             function show(n) {
                 slides.forEach(s => s.classList.remove('active'));
                 dots.forEach(d => d.classList.remove('active'));
@@ -101,25 +101,25 @@
                 slides[i].classList.add('active');
                 dots[i].classList.add('active');
             }
-
+        
             function auto() {
                 timer = setInterval(() => show(i + 1), 5000);
             }
-
+        
             [prev, next].forEach(btn => btn.addEventListener('click', () => {
                 clearInterval(timer);
                 show(i + (btn.classList.contains('next') ? 1 : -1));
                 auto();
             }));
-
+        
             dots.forEach((d, idx) => d.addEventListener('click', () => {
                 clearInterval(timer);
                 show(idx);
                 auto();
             }));
-
+        
             auto();
-
+        
             const playBtn = document.querySelector('.play-btn');
             playBtn.addEventListener('click', () => {
                 if (document.querySelector('.notify')) return;
@@ -129,19 +129,22 @@
                 document.body.appendChild(notify);
                 notify.querySelector('button').addEventListener('click', () => notify.remove());
             });
-
+        
             const content = document.querySelector('.content');
+        
             async function loadContent(page) {
                 try {
                     const res = await fetch(page + '.html');
                     if (!res.ok) throw new Error('Ошибка загрузки');
+                    
                     const html = await res.text();
                     content.innerHTML = html;
+                    if (typeof load === "function") load();
                 } catch {
                     content.innerHTML = '<p>Не удалось загрузить страницу.</p>';
                 }
             }
-
+        
             function handleNavClick(e) {
                 if (e.target.tagName === 'A' && e.target.getAttribute('href').startsWith('#')) {
                     e.preventDefault();
@@ -149,10 +152,10 @@
                     loadContent(page);
                 }
             }
-
+        
             document.querySelector('.nav-menu').addEventListener('click', handleNavClick);
             document.querySelector('.dropdown-menu').addEventListener('click', handleNavClick);
-
+        
             if (!location.hash) {
                 loadContent('main');
             } else {
@@ -162,5 +165,3 @@
     </script>
 </body>
 </html>
-
-
