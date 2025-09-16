@@ -1,105 +1,52 @@
 <style>
-	.monitoring {
-		display: flex;
-		flex-direction: column;
-		gap: 25px;
-		align-items: center;
-	}
-
-	.monitoring-header {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		align-items: center;
-		background: rgba(255,255,255,0.05);
-		padding: 15px 20px;
-		border-radius: 10px;
-		width: 100%;
-		box-sizing: border-box;
-	}
-
-	.monitoring-header h2 {
-		margin: 0;
-		font-size: 1.6em;
-	}
-
-	.monitoring-header .online-count {
-		font-size: 1.2em;
-		color: #fff;
-		margin-top: 10px;
-	}
-
+	.monitoring { display: flex; flex-direction: column; gap: 25px; align-items: center; }
+	.monitoring-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 15px 20px; border-radius: 10px; width: 100%; box-sizing: border-box; }
+	.monitoring-header h2 { margin: 0; font-size: 1.6em; }
+	.monitoring-header .online-count { font-size: 1.2em; color: #fff; margin-top: 10px; }
 	#total-online { color: #FF9400; }
-
-	.monitoring-servers {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 20px;
-		justify-content: center;
-		width: 100%;
-	}
-
-	.server-card {
-		background: rgba(255,255,255,0.08);
-		backdrop-filter: blur(5px);
-		border-radius: 10px;
-		overflow: hidden;
-		width: 48%;
-		min-width: 200px;
-		max-width: 500px;
-		display: flex;
-		flex-direction: column;
-		color: white;
-		box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-		transition: transform 0.3s;
-	}
-
-	.server-card:hover {
-		transform: translateY(-5px);
-	}
-
-	.server-image {
-		width: 100%;
-		height: 150px;
-		object-fit: cover;
-	}
-
-	.server-body {
-		padding: 15px 20px;
-	}
-
-	.server-title {
-		font-size: 1.4em;
-		margin-bottom: 10px;
-		color: #FF9400;
-	}
-
-	.server-desc {
-		font-size: 0.95em;
-		margin-bottom: 15px;
-	}
-
-	.server-online {
-		font-size: 0.9em;
-		color: #ccc;
-	}
-
+	.monitoring-servers { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; width: 100%; }
+	.server-card { background: rgba(255,255,255,0.08); backdrop-filter: blur(5px); border-radius: 10px; overflow: hidden; width: 48%; min-width: 200px; max-width: 500px; display: flex; flex-direction: column; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.3s; }
+	.server-card:hover { transform: translateY(-5px); }
+	.server-image { width: 100%; height: 150px; object-fit: cover; }
+	.server-body { padding: 15px 20px; }
+	.server-title { font-size: 1.4em; margin-bottom: 10px; color: #FF9400; }
+	.server-desc { font-size: 0.95em; margin-bottom: 15px; }
+	.server-online { font-size: 0.9em; color: #ccc; }
 	@media (max-width: 768px) {
-		.monitoring-header {
-			flex-direction: column;
-			align-items: flex-start;
-		}
-
-		.monitoring-header .online-count {
-			margin-top: 5px;
-		}
-
-		.server-card {
-			width: 90%;
-		}
+		.monitoring-header { flex-direction: column; align-items: flex-start; }
+		.monitoring-header .online-count { margin-top: 5px; }
+		.server-card { width: 90%; }
 	}
 </style>
+
 <div class="hr"></div>
+
+<p>Shield City — уникальный сервер Minecraft, где каждый игрок может расширять свои владения,
+создавать семьи-кланы и прокачивать свои возможности для выживания и доминирования!
+Здесь у вас есть свобода выбора: строить защиту своей территории, прокачивать себя,
+укреплять силы своей семьи или отправляться на завоевание чужих участков.</p>
+<p>
+	<h2>Особенности игры на Shield City</h2>
+	<ul>
+		<li>Расширяй и защищай свои владения: Прокачивайте Шилдбокс — специальный защитный блок,
+		который укрепит ваш участок и поможет обороняться от нападений других игроков.
+		Поднимайтесь в уровне защиты, чтобы стать неуязвимым, или используйте мощь Шилдбокса,
+		чтобы разрушить владения соперников!</li>
+		<li>Создавай семью: Станьте частью семьи-клана, где вас поддержат и дадут игровое преимущество.
+		Семья предоставляет почти бесконечные хранилища ресурсов и возможность захватывать территории
+		для получения редких эффектов, которые будут работать на ваших союзников до 3 дней!</li>
+		<li>Выбирайте свой путь: Вы можете выбрать спокойный путь и сосредоточиться на мирных занятиях,
+		как торговля, исследование мира и участие в событиях. Или вступите в борьбу за власть и
+		захватывайте ценные территории.</li>
+		<li>События и ивенты: Участвуйте в различных игровых событиях, зарабатывайте награды и
+		доказывайте свое мастерство! На сервере постоянно проходят активности, где можно получить
+		редкие предметы и уникальные достижения.</li>
+		<li>Продуманная система перков: Удобный и справедливый способ прокачки позволяет получать
+		только нужные функции, при этом все они доступны за игровые предметы, которые можно добыть и
+		скрафтить в процессе игры. Мы верим, что баланс — главное, и на сервере Shield City каждый
+		может развиваться честным путем.</li>
+	</ul>
+</p>
 
 <div class="monitoring">
 	<div class="monitoring-header">
@@ -127,4 +74,5 @@
 </div>
 
 <div class="hr"></div>
+
 
