@@ -10,6 +10,36 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
+	<!-- Модальное окно для уведомления -->
+	<div class="modal fade" id="playModal" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">🎮 Начать игру</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="text-center">
+						<p>
+							Пожалуйста, ознакомьтесь с нашими
+							<a href="#rules" target="_blank">правилами</a> и
+							<a href="#offer" target="_blank">офертой</a>.
+						</p>
+						<p>
+							Как начать игру на наших серверах? Изучите раздел
+							«<a href="#howto-start" target="_blank">Вики</a>» в меню сайта.
+						</p>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-warning">
+						<i class="fas fa-play me-2"></i>Понятно
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
     <div class="background-blobs">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
@@ -39,7 +69,8 @@
                     </div>
                 </div>
             </nav>
-            <button class="play-btn"><i class="fas fa-play"></i>Играть</button>
+            <!-- <button class="play-btn"><i class="fas fa-play"></i>Играть</button> -->
+			<button class="play-btn" data-bs-toggle="modal" data-bs-target="#playModal"><i class="fas fa-play"></i>Играть</button>
         </header>
 
         <div class="slider-container">
@@ -125,7 +156,7 @@
         
             auto();
         
-            const playBtn = document.querySelector('.play-btn');
+            /* const playBtn = document.querySelector('.play-btn');
             playBtn.addEventListener('click', () => {
                 if (document.querySelector('.notify')) return;
                 const notify = document.createElement('div');
@@ -133,7 +164,7 @@
                 notify.innerHTML = '<span>Подключение к серверу...</span><button>&times;</button>';
                 document.body.appendChild(notify);
                 notify.querySelector('button').addEventListener('click', () => notify.remove());
-            });
+            }); */
         
             const content = document.querySelector('.content');
 
@@ -167,6 +198,7 @@
 				}
 			}
 			
+			document.querySelector('.logo').addEventListener('click', handleNavClick);
 			document.querySelector('.nav-menu').addEventListener('click', handleNavClick);
 			document.querySelector('.dropdown-menu').addEventListener('click', handleNavClick);
 			document.querySelector('.footer-links').addEventListener('click', handleNavClick);
