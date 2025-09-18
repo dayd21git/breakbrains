@@ -23,13 +23,19 @@
             </div>
             <nav class="nav-menu">
                 <a href="#main"><i class="fas fa-home"></i>Домой</a>
-                <a href="#howto"><i class="fas fa-gamepad"></i>Как играть?</a>
+                <div class="dropdown">
+                    <div class="dropdown-toggle"><i class="fas fa-map"></i>Вики</div>
+                    <div class="dropdown-menu">
+                        <a href="#howto-start">Начало</a>
+                        <a href="#howto-locations">Локации</a>
+                    </div>
+                </div>
                 <a href="#rules"><i class="fas fa-clipboard-list"></i>Правила</a>
                 <div class="dropdown">
                     <div class="dropdown-toggle"><i class="fas fa-map"></i>Карта</div>
                     <div class="dropdown-menu">
-                        <a href="http://45.93.200.89:8123" target="_blank"><i class="fas fa-cube"></i>Vanilla</a>
-                        <a href="http://45.93.200.89:8124" target="_blank"><i class="fas fa-puzzle-piece"></i>Forge</a>
+                        <a href="#vanilla"><i class="fas fa-cube"></i>Vanilla</a>
+                        <a href="#forge"><i class="fas fa-puzzle-piece"></i>Forge</a>
                     </div>
                 </div>
             </nav>
@@ -78,6 +84,7 @@
         <footer class="section footer">
             <div>© 2025 ShieldCity. Ничто не защищено<br>⚠️ Задротство доводит до нервных срывов и вредит вашему здоровью!</div>
             <div class="footer-links">
+                <a href="#changelog">Обновления</a>
                 <a href="#">Политика</a>
                 <a href="#">Условия</a>
                 <a href="#">Контакты</a>
@@ -164,6 +171,7 @@
 			
 			document.querySelector('.nav-menu').addEventListener('click', handleNavClick);
 			document.querySelector('.dropdown-menu').addEventListener('click', handleNavClick);
+			document.querySelector('.footer-links').addEventListener('click', handleNavClick);
 		
 			if (!location.hash) {
 				loadContent('main');
@@ -174,4 +182,3 @@
     </script>
 </body>
 </html>
-
