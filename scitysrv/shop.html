@@ -1,0 +1,90 @@
+<style>
+.shop-card { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 15px; backdrop-filter: blur(10px); transition: transform 0.3s ease, box-shadow 0.3s ease; color: white; }
+.shop-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(255, 148, 0, 0.2); }
+.shop-card .card-img-top { border-radius: 15px 15px 0 0; height: 200px; object-fit: cover; }
+.shop-card .card-title { font-weight: 600; }
+.shop-card .card-text { color: #ccc; margin-bottom: 1rem; }
+.shop-card .list-unstyled li { color: #ddd; margin-bottom: 0.3rem; font-size: 0.9em; }
+.shop-card .btn-warning { color: white; background: linear-gradient(45deg, #FF9400, #FFB74D); border: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease; }
+.shop-card .btn-warning:hover { background: linear-gradient(45deg, #FFB74D, #FF9400); transform: scale(1.05); }
+.badge { font-size: 0.7em; padding: 0.5em 0.7em; }
+</style>
+
+<h2>🛒 Магазин</h2>
+<div class="css-spoiler">
+    <input type="checkbox" id="#connect" class="spoiler-checkbox">
+    <label for="#connect" class="spoiler-label">👁️ Информация</label>
+    <div class="spoiler-content">
+		<p>
+			Shield City принципиально избегает модели «Pay to Win».
+			Все игровые преимущества можно получить исключительно
+			через игровой процесс.
+		</p>
+		<p>
+			Наш магазин существует для <strong>покрытия базовых расходов</strong>:
+		</p>
+		<ul>
+			<li>📦 Высокопроизводительный хостинг серверов</li>
+			<li>🌐 Доменные имена и SSL сертификаты</li>
+			<li>⚡ Электроэнергия и оборудование</li>
+			<li>🔧 Техническая поддержка и обновления</li>
+			<li>👷‍ Оплата труда</li>
+		</ul>
+		<p>
+			Каждая покупка — это прямой вклад в развитие и стабильность проекта. 
+			Спасибо за вашу поддержку!
+		</p>
+	</div>
+</div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+	
+        <div class="col">
+            <div class="card h-100 shop-card">
+                <!--<div class="badge bg-danger position-absolute top-0 end-0 m-2">НОВИНКА</div>-->
+                <!--<div class="badge bg-success position-absolute top-0 end-0 m-2">ПОПУЛЯРНО</div>-->
+                <img src="img/vip.jpg" class="card-img-top" alt="VIP статус">
+                <div class="card-body">
+                    <h5 class="card-title">VIP Статус</h5>
+                    <p class="card-text">Для тех, кто хочет поддержать проект!</p>
+                    <ul class="list-unstyled">
+                        <li>✓ Двойной /free каждый день</li>
+                        <li>✓ Вход на полный сервер</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="h5 mb-0">299 ₽</span>
+                        <a href="#" class="btn btn-warning" target="_blank">
+                            🛒 Купить
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+        <div class="col">
+            <div class="card h-100 shop-card">
+				<div class="badge bg-success position-absolute top-0 end-0 m-2">СКИДКА 50%</div>
+                <img src="img/pardon.jpg" class="card-img-top" alt="Стартовый набор">
+                <div class="card-body">
+                    <h5 class="card-title">Помилование</h5>
+                    <p class="card-text">
+						Получил блокировку чата или игры? Не проблема! С покупкой данного товара
+						ты получаешь обнуление текущего наказания.
+					</p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="h5 mb-0">99 ₽</span>
+                        <a href="#" class="btn btn-warning" target="_blank">
+                            🛒 Купить
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+    </div>
+</div>
